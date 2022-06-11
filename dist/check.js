@@ -11,7 +11,7 @@ export function check() {
     let confirmed = confirm(`Вы выполнили на ${result}% из 100%
     Хотите повторить тест?`);
     if (confirmed) {
-        location.reload(true);
+        location.reload();
     }
     else {
         alert("Спасибо за выполнение теста");
