@@ -72,27 +72,4 @@ export let questions = [
         new Answer("О чем Вы?", 0)
     ], 9),
 ];
-console.log(questions);
-questions.forEach(question => {
-    let div = document.createElement("div");
-    div.classList.add("question");
-    let pHead = document.createElement("p");
-    pHead.classList.add("p-head");
-    pHead.innerText = question.text;
-    div.append(pHead);
-    for (let i = 0; i < question.answers.length; i++) {
-        let divAnswers = document.createElement("div");
-        divAnswers.classList.add("answers");
-        let input = document.createElement("input");
-        input.type = "radio";
-        input.name = `answer-${question.id}`;
-        input.value = question.answers[i].value;
-        let p = document.createElement("p");
-        p.innerText = question.answers[i].text;
-        divAnswers.append(input);
-        divAnswers.append(p);
-        div.append(divAnswers);
-    }
-    document.body.append(div);
-});
 //# sourceMappingURL=questions.js.map
