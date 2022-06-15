@@ -13,7 +13,7 @@ export class Question implements IQuestions{
   this.answers = answers;
   this.id = id}
 
-  createIn(element) {
+  createIn(element: any) {
     let div = document.createElement("div");
     div.classList.add("question");
     let pHead = document.createElement("p");
