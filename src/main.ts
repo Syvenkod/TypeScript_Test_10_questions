@@ -1,32 +1,18 @@
 import {questions} from "./questions.js"
 
-let questionList = document.querySelector(".questions-list");
+class Test{
+    element:HTMLDivElement;
+    questions: [];
 
-questions.forEach(question => {
-        let div = document.createElement("div");
-        div.classList.add("question");
-        let pHead = document.createElement("p");
-        pHead.classList.add("p-head");
-        pHead.innerText = question.text;
-        div.append(pHead);
-        for (let i=0; i<question.answers.length; i++){
-            let divAnswers = document.createElement("div");
-            divAnswers.classList.add("answers");
-            let input = document.createElement("input");
-            input.type = "radio";
-            input.name = `answer-${question.id}`;
-            input.value = question.answers[i].value;
-            input.classList.add("answer-input");
-            let p = document.createElement("p");
-            p.innerText = question.answers[i].text;
-            divAnswers.append(input);
-            divAnswers.append(p);
-            div.append(divAnswers);}
-        questionList.append(div);
+    constructor(questions)
+    {this.questions = questions;}
+
+    drawAll(){
+    questions.forEach(question => {
+        question.createIn(this.questions)
+           })
     }
-        )
-
-    function check (){
+    check (){
         let counter = 0;
         let answersArray:NodeListOf<HTMLInputElement> = document.querySelectorAll(".answer-input");
             for (let i=0; i<answersArray.length; i++) {
@@ -41,5 +27,14 @@ questions.forEach(question => {
         else {alert("Спасибо за выполнение теста")}
         }
 
-document.querySelector("#result").addEventListener("click",check);
+}
+
+    let questionList = document.querySelector(".questions-list");
+    let test = new Test(questionList);
+
+    window.addEventListener("load", function () {
+        test.drawAll();
+    });
+
+document.querySelector("#result").addEventListener("click", test.check);
 
